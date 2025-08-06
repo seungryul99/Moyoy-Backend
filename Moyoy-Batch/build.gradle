@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':Moyoy-Domain')
+    implementation project(':Moyoy-Common')
+}
+
+bootJar.enabled = true

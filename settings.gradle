@@ -1,0 +1,6 @@
+rootProject.name = 'Moyoy-Backend'
+
+include 'Moyoy-Api'
+include 'Moyoy-Batch'
+include 'Moyoy-Domain'
+include 'Moyoy-Common'
