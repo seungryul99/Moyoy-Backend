@@ -2,7 +2,7 @@ package com.moyoy.api.github_ranking.presentation;
 
 import java.util.List;
 
-import com.moyo.backend.domain.github_ranking.business.RankingSearchResult;
+import com.moyoy.api.github_ranking.business.RankingSearchResult;
 
 public record RankingSearchResponse(
 	List<UserAndRanking> userList,

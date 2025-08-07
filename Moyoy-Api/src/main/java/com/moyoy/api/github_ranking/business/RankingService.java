@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.moyo.backend.domain.github_follow.implement.GithubFollowRelation;
-import com.moyo.backend.domain.github_follow.implement.GithubFollowRelationReader;
-import com.moyo.backend.domain.github_ranking.implement.Ranking;
-import com.moyo.backend.domain.github_ranking.implement.RankingReader;
-import com.moyo.backend.domain.github_ranking.implement.RankingSlice;
-import com.moyo.backend.domain.github_ranking.implement.RankingUserCombiner;
-import com.moyo.backend.domain.github_ranking.implement.RankingWithUser;
-import com.moyo.backend.domain.user.implement.User;
-import com.moyo.backend.domain.user.implement.UserReader;
+import com.moyoy.domain.follow.implement.GithubFollowRelation;
+import com.moyoy.domain.follow.implement.GithubFollowRelationReader;
+import com.moyoy.domain.ranking.implement.Ranking;
+import com.moyoy.domain.ranking.implement.RankingReader;
+import com.moyoy.domain.ranking.implement.RankingSlice;
+import com.moyoy.domain.ranking.implement.RankingUserCombiner;
+import com.moyoy.domain.ranking.implement.RankingWithUser;
+import com.moyoy.domain.user.implement.User;
+import com.moyoy.domain.user.implement.UserReader;
 
 import lombok.RequiredArgsConstructor;
 

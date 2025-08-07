@@ -1,6 +1,7 @@
 package com.moyoy.common.exception.ranking;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

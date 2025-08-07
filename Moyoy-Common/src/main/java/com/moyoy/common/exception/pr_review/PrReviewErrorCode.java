@@ -1,7 +1,6 @@
 package com.moyoy.common.exception.pr_review;
 
-import static com.moyo.backend.common.constant.MoyoConstants.FORBIDDEN;
-import static com.moyo.backend.common.constant.MoyoConstants.NOT_FOUND;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

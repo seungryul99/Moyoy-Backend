@@ -1,6 +1,6 @@
 package com.moyoy.common.exception.github_follow;
 
-import static com.moyo.backend.common.constant.MoyoConstants.BAD_REQUEST;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

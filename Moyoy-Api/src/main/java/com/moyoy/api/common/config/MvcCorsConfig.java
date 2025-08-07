@@ -1,6 +1,6 @@
 package com.moyoy.api.common.config;
 
-import static com.moyo.backend.common.constant.MoyoConstants.AUTHORIZATION;
+import static com.moyoy.common.constant.MoyoConstants.AUTHORIZATION;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

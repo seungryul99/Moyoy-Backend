@@ -1,7 +1,6 @@
 package com.moyoy.api.common.util;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
-import static com.moyo.backend.domain.auth.jwt.implement.JwtProvider.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.Serializable;
 import java.util.Base64;

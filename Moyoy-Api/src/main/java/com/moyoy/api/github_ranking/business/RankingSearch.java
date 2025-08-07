@@ -1,6 +1,6 @@
 package com.moyoy.api.github_ranking.business;
 
-import com.moyo.backend.domain.github_ranking.implement.RankingPeriod;
+import com.moyoy.domain.ranking.implement.RankingPeriod;
 
 public record RankingSearch(
 	RankingPeriod period,

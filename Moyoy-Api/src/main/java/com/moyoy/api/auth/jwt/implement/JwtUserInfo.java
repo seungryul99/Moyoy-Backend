@@ -2,7 +2,7 @@ package com.moyoy.api.auth.jwt.implement;
 
 import org.springframework.security.core.Authentication;
 
-import com.moyo.backend.domain.auth.oauth.dto.GithubOAuth2User;
+import com.moyoy.api.auth.security.dto.GithubOAuth2User;
 
 public record JwtUserInfo(
 	Long userId,

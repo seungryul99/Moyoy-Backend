@@ -1,6 +1,10 @@
 dependencies {
     implementation project(':Moyoy-Domain')
     implementation project(':Moyoy-Common')
+    implementation project(':Moyoy-Infra')
+    
+    // 스프링 배치 도입 전에 직접 만드는 중이라 JobRepository 구현 때문에 임시로 들어옴
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
 bootJar.enabled = true

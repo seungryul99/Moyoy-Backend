@@ -1,6 +1,7 @@
 package com.moyoy.api.auth.jwt.support;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
 
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moyo.backend.common.exception.MoyoException;
-import com.moyo.backend.common.response.ApiResponse;
+import com.moyoy.api.common.response.ApiResponse;
+import com.moyoy.common.exception.MoyoException;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

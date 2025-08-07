@@ -1,6 +1,6 @@
 package com.moyoy.api.auth.jwt.presentation;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.moyo.backend.common.response.ApiResponse;
-import com.moyo.backend.common.util.CookieUtils;
-import com.moyo.backend.domain.auth.jwt.business.JwtReissueService;
-import com.moyo.backend.domain.auth.jwt.business.ReissuedTokens;
+import com.moyoy.api.auth.jwt.business.JwtReissueService;
+import com.moyoy.api.auth.jwt.business.ReissuedTokens;
+import com.moyoy.api.common.response.ApiResponse;
+import com.moyoy.api.common.util.CookieUtils;
 
 import lombok.RequiredArgsConstructor;
 

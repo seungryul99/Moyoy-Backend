@@ -1,7 +1,6 @@
 package com.moyoy.common.exception.auth;
 
-import static com.moyo.backend.common.constant.MoyoConstants.FORBIDDEN;
-import static com.moyo.backend.common.constant.MoyoConstants.UNAUTHORIZED;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

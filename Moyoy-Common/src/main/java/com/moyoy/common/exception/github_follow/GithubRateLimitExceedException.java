@@ -1,6 +1,7 @@
 package com.moyoy.common.exception.github_follow;
 
-import static com.moyo.backend.common.exception.github_follow.FollowErrorCode.LIMIT_EXCEED;
+
+import static com.moyoy.common.exception.github_follow.FollowErrorCode.*;
 
 import com.moyoy.common.exception.MoyoException;
 

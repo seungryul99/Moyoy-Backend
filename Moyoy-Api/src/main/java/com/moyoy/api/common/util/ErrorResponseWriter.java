@@ -1,14 +1,14 @@
 package com.moyoy.api.common.util;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moyo.backend.common.exception.BaseErrorCode;
-import com.moyo.backend.common.response.ApiResponse;
+import com.moyoy.api.common.response.ApiResponse;
+import com.moyoy.common.exception.BaseErrorCode;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

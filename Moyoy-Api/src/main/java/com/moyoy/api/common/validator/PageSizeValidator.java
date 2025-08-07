@@ -1,6 +1,6 @@
 package com.moyoy.api.common.validator;
 
-import com.moyo.backend.common.validation.annotation.ValidPageSize;
+import com.moyoy.api.common.annotation.ValidPageSize;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

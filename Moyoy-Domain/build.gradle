@@ -1,5 +1,6 @@
 dependencies {
     implementation project(':Moyoy-Common')
+    implementation project(':Moyoy-Infra')
 
     // MySQL
     runtimeOnly 'com.mysql:mysql-connector-j'

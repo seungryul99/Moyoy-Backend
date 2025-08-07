@@ -1,6 +1,6 @@
 package com.moyoy.api.auth.jwt.support;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -18,10 +18,10 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.moyo.backend.common.exception.auth.JwtTokenExpiredException;
-import com.moyo.backend.common.exception.auth.JwtTokenInvalidException;
-import com.moyo.backend.common.exception.auth.JwtTokenTypeMismatchException;
-import com.moyo.backend.domain.auth.oauth.dto.GithubOAuth2User;
+import com.moyoy.api.auth.security.dto.GithubOAuth2User;
+import com.moyoy.common.exception.auth.JwtTokenExpiredException;
+import com.moyoy.common.exception.auth.JwtTokenInvalidException;
+import com.moyoy.common.exception.auth.JwtTokenTypeMismatchException;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;

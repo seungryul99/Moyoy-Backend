@@ -3,6 +3,7 @@ package com.moyoy.domain.user.data_access;
 import java.util.List;
 import java.util.Optional;
 
+import com.moyoy.domain.ranking.data_access.UserCountAndLastId;
 import com.moyoy.domain.user.implement.User;
 
 public interface UserRepository {

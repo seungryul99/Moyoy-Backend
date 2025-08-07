@@ -4,11 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.SliceImpl;
-
-import com.moyo.backend.domain.github_follow.implement.GithubFollowUser;
+import com.moyoy.domain.follow.implement.GithubFollowUser;
 
 public record GithubFollowDetectionResult(
 

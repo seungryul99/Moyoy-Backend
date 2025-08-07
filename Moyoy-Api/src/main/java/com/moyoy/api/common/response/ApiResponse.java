@@ -1,9 +1,9 @@
 package com.moyoy.api.common.response;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.moyo.backend.common.exception.ErrorReason;
+import com.moyoy.common.exception.ErrorReason;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

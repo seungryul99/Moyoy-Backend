@@ -32,7 +32,15 @@ public class UserReader {
 	}
 
 	public UserRankingBatchSnapshot getUserBatchSnapshot() {
-		UserCountAndLastId userCountAndLastId = userRepository.fetchUserCountAndLastId();
-		return UserRankingBatchSnapshot.from(userCountAndLastId);
+		UserStats userStats = userRepository.fetchUserCountAndLastId();
+		return UserRankingBatchSnapshot.from(userStats);
 	}
+
+	public UserStats getUserStats() {
+
+
+		userRepository.fetchUserCountAndLastId();
+		return new UserStats(count, lastId);
+	}
+
 }

@@ -1,14 +1,14 @@
 package com.moyoy.api.auth.jwt.business;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import org.springframework.stereotype.Service;
 
-import com.moyo.backend.domain.auth.jwt.implement.JwtPayloadExtractor;
-import com.moyo.backend.domain.auth.jwt.implement.JwtProvider;
-import com.moyo.backend.domain.auth.jwt.implement.JwtRefreshTokenValidator;
-import com.moyo.backend.domain.auth.jwt.implement.JwtRefreshWhiteListUpdater;
-import com.moyo.backend.domain.auth.jwt.implement.JwtUserInfo;
+import com.moyoy.api.auth.jwt.implement.JwtPayloadExtractor;
+import com.moyoy.api.auth.jwt.implement.JwtProvider;
+import com.moyoy.api.auth.jwt.implement.JwtRefreshTokenValidator;
+import com.moyoy.domain.auth.implement.JwtRefreshWhiteListUpdater;
+import com.moyoy.api.auth.jwt.implement.JwtUserInfo;
 
 import lombok.RequiredArgsConstructor;
 

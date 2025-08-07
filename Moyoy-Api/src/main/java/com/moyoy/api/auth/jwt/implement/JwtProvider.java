@@ -1,6 +1,6 @@
 package com.moyoy.api.auth.jwt.implement;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.util.Date;
 

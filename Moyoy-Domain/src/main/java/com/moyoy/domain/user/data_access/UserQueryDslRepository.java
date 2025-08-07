@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.moyoy.domain.ranking.data_access.UserCountAndLastId;
 import com.moyoy.domain.user.implement.User;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;

@@ -1,6 +1,6 @@
 package com.moyoy.common.exception.user;
 
-import static com.moyo.backend.common.constant.MoyoConstants.NOT_FOUND;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import com.moyoy.common.exception.ErrorReason;
 @RequiredArgsConstructor
 public enum UserErrorCode implements BaseErrorCode {
 
-	USER_NOT_FOUND(NOT_FOUND, "USER_400_1", "존재하지 않는 사용자 입니다.");
+	USER_NOT_FOUND(NOT_FOUND, "USER_404_1", "존재하지 않는 사용자 입니다.");
 
 	private final Integer status;
 	private final String code;

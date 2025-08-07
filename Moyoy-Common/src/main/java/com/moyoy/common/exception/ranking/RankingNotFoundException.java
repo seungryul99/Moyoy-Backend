@@ -1,6 +1,7 @@
 package com.moyoy.common.exception.ranking;
 
-import static com.moyo.backend.common.exception.ranking.RankingErrorCode.*;
+
+import static com.moyoy.common.exception.ranking.RankingErrorCode.*;
 
 import com.moyoy.common.exception.MoyoException;
 

@@ -1,1 +1,5 @@
+dependencies {
+    implementation project(':Moyoy-Common')
+}
+
 jar.enabled = true

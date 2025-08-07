@@ -1,6 +1,7 @@
 package com.moyoy.api.common.validator;
 
-import com.moyo.backend.common.validation.annotation.LastFetchedUserId;
+
+import com.moyoy.api.common.annotation.LastFetchedUserId;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

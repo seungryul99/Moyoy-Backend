@@ -21,10 +21,11 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+import com.moyoy.api.common.response.ApiResponse;
 import com.moyoy.common.exception.CommonErrorCode;
 import com.moyoy.common.exception.ErrorReason;
 import com.moyoy.common.exception.MoyoException;
-import com.moyo.backend.common.response.ApiResponse;
+
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

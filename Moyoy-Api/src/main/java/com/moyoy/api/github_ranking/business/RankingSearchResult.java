@@ -2,9 +2,9 @@ package com.moyoy.api.github_ranking.business;
 
 import java.util.List;
 
-import com.moyo.backend.domain.github_ranking.implement.Ranking;
-import com.moyo.backend.domain.github_ranking.implement.RankingPeriod;
-import com.moyo.backend.domain.github_ranking.implement.RankingWithUser;
+import com.moyoy.domain.ranking.implement.Ranking;
+import com.moyoy.domain.ranking.implement.RankingPeriod;
+import com.moyoy.domain.ranking.implement.RankingWithUser;
 
 public record RankingSearchResult(
 	List<RankingWithUser> rankingWithUsers,

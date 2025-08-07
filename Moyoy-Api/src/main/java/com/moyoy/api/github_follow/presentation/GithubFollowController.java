@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.moyo.backend.common.annotation.LoginUserId;
-import com.moyo.backend.common.response.ApiResponse;
-import com.moyo.backend.domain.github_follow.business.GithubFollowDetection;
-import com.moyo.backend.domain.github_follow.business.GithubFollowDetectionResult;
-import com.moyo.backend.domain.github_follow.business.GithubFollowService;
+import com.moyoy.api.common.annotation.LoginUserId;
+import com.moyoy.api.common.response.ApiResponse;
+import com.moyoy.api.github_follow.business.GithubFollowDetection;
+import com.moyoy.api.github_follow.business.GithubFollowDetectionResult;
+import com.moyoy.api.github_follow.business.GithubFollowService;
 
 import lombok.RequiredArgsConstructor;
 

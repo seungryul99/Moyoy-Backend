@@ -1,6 +1,6 @@
 package com.moyoy.common.exception;
 
-import static com.moyo.backend.common.constant.MoyoConstants.*;
+import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,8 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum CommonErrorCode implements BaseErrorCode {
-
-	// 예시
+	
 	INVALID_PARAM(BAD_REQUEST, "COMMON_400_1", "파라미터를 다시 확인해 주세요."),
 	PARAM_TYPE_MISMATCH(BAD_REQUEST, "COMMON_400_2", "파라미터를 다시 확인해 주세요."),
 	INVALID_SORT_PARAM(BAD_REQUEST, "COMMON_400_3", "정렬 파라미터 형식을 다시 확인해 주세요."),
