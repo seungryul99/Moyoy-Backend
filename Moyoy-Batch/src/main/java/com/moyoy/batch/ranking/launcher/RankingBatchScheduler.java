@@ -33,6 +33,7 @@ public class RankingBatchScheduler {
 		LocalDateTime now = LocalDateTime.now();
 		RankingBatchHistory rankingBatchHistory = RankingBatchHistory.init(now, currentThread().getName());
 		jobHistoryRepository.save(rankingBatchHistory);
+
 		log.info("{} 랭킹 배치 작업 시작!", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
 		discordNotifier.sendNotification(NotificationRequest.of(NotificationType.RANKING_BATCH_START, rankingBatchHistory.getId()));

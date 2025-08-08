@@ -2,11 +2,13 @@ package com.moyoy.common.constant;
 
 public class MoyoConstants {
 
-	// HTTP Header 관련
+	// HTTP Header 
 	public static final String SET_COOKIE = "Set-Cookie";
 	public static final String AUTHORIZATION = "Authorization";
 	public static final String JSON = "application/json";
 	public static final String UTF_8 = "UTF-8";
+	public static final String CONTENT_TYPE = "Content-Type";
+	public static final String ACCEPT = "Accept";
 
 	// HTTP 상태 코드
 	public static final int OK = 200;
@@ -33,7 +35,6 @@ public class MoyoConstants {
 	public static final String GITHUB_OAUTH2_USER_ID = "id";
 	public static final String GITHUB_OAUTH2_USER_NAME = "login";
 	public static final String GITHUB_OAUTH2_USER_AVATAR_URL = "avatar_url";
-	public static final int GITHUB_FOLLOW_QUERY_PAGING_SIZE = 100;
 	public static final int GITHUB_QUERY_PAGING_SIZE = 100;
 
 	public static final long ONE_MINUTE_MILLS = 60000L; // 60 * 1000

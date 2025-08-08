@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.component.dto.GithubCommitStats;
-import com.moyoy.infra.github.ranking.RepoContributorStats;
+import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 
 @Component
 public class CommitStatCalculator {

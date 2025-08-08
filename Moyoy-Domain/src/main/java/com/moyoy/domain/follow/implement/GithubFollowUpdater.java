@@ -2,11 +2,12 @@ package com.moyoy.domain.follow.implement;
 
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.moyoy.common.exception.user.UserNotFoundException;
 import com.moyoy.domain.common.github.GithubOAuthTokenReader;
-import com.moyoy.infra.github.follow.GithubFollowHttpClient;
+import com.moyoy.infra.github.feign.GithubFollowClient;
 import com.moyoy.domain.user.implement.User;
 import com.moyoy.domain.user.implement.UserReader;
 
@@ -18,19 +19,21 @@ public class GithubFollowUpdater {
 
 	private final GithubUserReader githubUserReader;
 	private final GithubOAuthTokenReader githubOAuthTokenReader;
-	private final GithubFollowHttpClient githubFollowHttpClient;
+	private final GithubFollowClient githubFollowClient;
 	private final GithubFollowCacheManager githubFollowCacheManager;
 	private final UserReader userReader;
 
 	public void follow(Long currentUserId, Integer targetGithubUserId) {
 
 		Integer githubUserId = userReader.findById(currentUserId).orElseThrow(UserNotFoundException::new).getGithubUserId();
-		String oauthAccessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
+		String accessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
 
-		GithubFollowUser currentUser = githubUserReader.getGithubUser(githubUserId, oauthAccessToken);
-		GithubFollowUser targetUser = githubUserReader.getGithubUser(targetGithubUserId, oauthAccessToken);
+		GithubFollowUser currentUser = githubUserReader.findGithubUser(githubUserId, accessToken);
+		GithubFollowUser targetUser = githubUserReader.findGithubUser(targetGithubUserId, accessToken);
 
-		int responseStatus = githubFollowHttpClient.follow(targetUser.username(), oauthAccessToken);
+		ResponseEntity<Void> followResult = githubFollowClient.follow(targetUser.username(), accessToken);
+
+		int responseStatus = followResult.getStatusCode().value();
 
 		if (responseStatus == 204) {
 
@@ -49,12 +52,14 @@ public class GithubFollowUpdater {
 	public void unfollow(Long currentUserId, Integer targetGithubUserId) {
 
 		Integer githubUserId = userReader.findById(currentUserId).orElseThrow(UserNotFoundException::new).getGithubUserId();
-		String oauthAccessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
+		String accessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
 
-		GithubFollowUser currentUser = githubUserReader.getGithubUser(githubUserId, oauthAccessToken);
-		GithubFollowUser targetUser = githubUserReader.getGithubUser(targetGithubUserId, oauthAccessToken);
+		GithubFollowUser currentUser = githubUserReader.findGithubUser(githubUserId, accessToken);
+		GithubFollowUser targetUser = githubUserReader.findGithubUser(targetGithubUserId, accessToken);
 
-		int responseStatus = githubFollowHttpClient.unfollow(targetUser.username(), oauthAccessToken);
+		ResponseEntity<Void> unfollowResult = githubFollowClient.unfollow(targetUser.username(), accessToken);
+
+		int responseStatus = unfollowResult.getStatusCode().value();
 
 		if (responseStatus == 204) {
 

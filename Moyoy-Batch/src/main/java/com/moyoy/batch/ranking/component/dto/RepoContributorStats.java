@@ -1,4 +1,4 @@
-package com.moyoy.infra.github.ranking;
+package com.moyoy.batch.ranking.component.dto;
 
 import java.util.List;
 

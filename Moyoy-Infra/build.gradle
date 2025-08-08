@@ -1,5 +1,6 @@
 dependencies {
     implementation project(':Moyoy-Common')
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
 }
 
 jar.enabled = true

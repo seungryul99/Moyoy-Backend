@@ -1,23 +1,25 @@
 package com.moyoy.batch.ranking.component.reader;
 
-
-
 import static com.moyoy.common.constant.MoyoConstants.*;
+import static com.moyoy.common.util.ThreadUtils.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.component.dto.GithubContributorDetails;
 import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
+import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 import com.moyoy.batch.ranking.component.dto.UserRankingProfile;
-import com.moyoy.infra.github.common.GithubCommonHttpClient;
-import com.moyoy.infra.github.common.GithubProfileResponse;
-import com.moyoy.infra.github.ranking.GithubContributorDetailsResponse;
-import com.moyoy.infra.github.ranking.GithubRankingHttpClient;
-import com.moyoy.infra.github.ranking.GithubRepoDetailsResponse;
-import com.moyoy.infra.github.ranking.RepoContributorStats;
+import com.moyoy.infra.github.feign.GithubProfileClient;
+import com.moyoy.infra.github.feign.GithubRepoClient;
+import com.moyoy.infra.github.dto.GithubProfileResponse;
+import com.moyoy.infra.github.dto.GithubRepoContributorsResponse;
+import com.moyoy.infra.github.dto.GithubRepoResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,52 +30,45 @@ import lombok.extern.slf4j.Slf4j;
 public class RankingBatchReader {
 
 	private final GithubContributeStatsParser githubContributeStatsParser;
-	private final GithubCommonHttpClient githubCommonHttpClient;
-	private final GithubRankingHttpClient githubRankingHttpClient;
+	private final GithubProfileClient githubProfileClient;
+	private final GithubRepoClient githubRepoClient;
 
 	public UserRankingProfile fetchUserRankingProfile(String accessToken, Integer githubUserId) {
 
-		GithubProfileResponse githubProfileResponse = githubCommonHttpClient.fetchUserProfile(accessToken, githubUserId);
+		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfileEntity(accessToken, githubUserId);
 
 		return UserRankingProfile.from(githubProfileResponse);
 	}
 
-	// 성능 장애가 발생할 수 있지만 대부분의 사용자가 소속된 Repo의 개수가 100개를 넘지 않을 것으로 추정되어 넘어가도 될 듯함.
+	// 사용자가 소속된 Repo 개수가 100개가 넘지 않으면 한번에 처리됨.
 	public List<GithubRepoDetails> fetchAllGithubRepoDetails(String accessToken) {
 
-		List<GithubRepoDetailsResponse> githubRepoDetailsResponseList = new ArrayList<>();
+		List<GithubRepoResponse> githubRepoResponseList = new ArrayList<>();
 		int currentPage = 1;
 
+		String affiliation = "owner,organization_member";
+		String since = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy")) + "-01-01T00:00:00Z";
+
 		while (true) {
-			List<GithubRepoDetailsResponse> pagedRepos = githubRankingHttpClient.fetchPagedRepos(currentPage, accessToken);
-			githubRepoDetailsResponseList.addAll(pagedRepos);
+
+			List<GithubRepoResponse> pagedRepos = githubRepoClient.fetchPagedRepos(affiliation, since, GITHUB_QUERY_PAGING_SIZE, currentPage, accessToken);
+			githubRepoResponseList.addAll(pagedRepos);
 
 			if (pagedRepos.size() < GITHUB_QUERY_PAGING_SIZE)
 				break;
 			currentPage++;
 		}
 
-		return githubRepoDetailsResponseList.stream()
+		return githubRepoResponseList.stream()
 			.map(GithubRepoDetails::from)
 			.toList();
 	}
 
-	// 성능 장애가 발생할 수 있지만 대부분의 Repo의 Contributor수가 100을 넘지 않을 것으로 추정되어 넘어가도 될 듯함.
 	public List<GithubContributorDetails> fetchRepoContributors(String repoFullName, String accessToken) {
 
-		List<GithubContributorDetailsResponse> githubContributorDetailsResponseList = new ArrayList<>();
-		int currentPage = 1;
+		List<GithubRepoContributorsResponse> githubRepoContributorsResponseList = githubRepoClient.fetchRepoContributors(repoFullName, accessToken);
 
-		while (true) {
-			List<GithubContributorDetailsResponse> pagedContributors = githubRankingHttpClient.fetchPagedContributors(currentPage, repoFullName, accessToken);
-			githubContributorDetailsResponseList.addAll(pagedContributors);
-
-			if (pagedContributors.size() < GITHUB_QUERY_PAGING_SIZE)
-				break;
-			currentPage++;
-		}
-
-		return githubContributorDetailsResponseList.stream()
+		return githubRepoContributorsResponseList.stream()
 			.map(GithubContributorDetails::from)
 			.toList();
 	}
@@ -86,7 +81,7 @@ public class RankingBatchReader {
 
 		for (int tryCount = 1; tryCount <= maxTryCount; tryCount++) {
 
-			response = githubRankingHttpClient.fetchContributorCommitActivity(repoFullName, accessToken);
+			response = githubRepoClient.fetchContributorCommitActivity(repoFullName, accessToken);
 
 			if (response.getStatusCode().value() == 200) {
 
@@ -94,8 +89,7 @@ public class RankingBatchReader {
 				break;
 			} else if (response.getStatusCode().value() == 202) {
 				sleep(10000);
-			} else
-				throw new RuntimeException("repo 통계 데이터 수집중 에러 발생");
+			} else throw new RuntimeException("repo 통계 데이터 수집중 에러 발생");
 		}
 
 		return githubContributeStatsParser.parseGithubContributeStats(response);

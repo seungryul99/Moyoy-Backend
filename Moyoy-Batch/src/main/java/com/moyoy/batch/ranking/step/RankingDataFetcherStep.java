@@ -14,7 +14,7 @@ import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
 import com.moyoy.batch.ranking.component.reader.RankingBatchReader;
 import com.moyoy.batch.ranking.component.dto.UserRankingProfile;
 import com.moyoy.domain.user.implement.User;
-import com.moyoy.infra.github.ranking.RepoContributorStats;
+import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 
 import lombok.RequiredArgsConstructor;
 

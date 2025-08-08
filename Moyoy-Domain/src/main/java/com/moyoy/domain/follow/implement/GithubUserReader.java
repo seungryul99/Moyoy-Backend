@@ -2,7 +2,9 @@ package com.moyoy.domain.follow.implement;
 
 import org.springframework.stereotype.Component;
 
+import com.moyoy.infra.github.feign.GithubProfileClient;
 import com.moyoy.infra.github.follow.GithubFollowHttpClient;
+import com.moyoy.infra.github.dto.GithubProfileResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,10 +12,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GithubUserReader {
 
-	private final GithubFollowHttpClient githubFollowHttpClient;
+	private final GithubProfileClient githubProfileClient;
 
-	public GithubFollowUser getGithubUser(Integer githubUserId, String oauthAccessToken) {
+	public GithubFollowUser findGithubUser(Integer githubUserId, String accessToken) {
 
-		return githubFollowHttpClient.fetchGithubFollowUserById(githubUserId, oauthAccessToken);
+		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfile(accessToken, githubUserId);
+
+		return GithubFollowUser.from(githubProfileResponse);
 	}
 }
