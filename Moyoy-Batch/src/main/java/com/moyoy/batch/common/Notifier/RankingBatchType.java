@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum NotificationType {
+public enum RankingBatchType {
 	RANKING_BATCH_START("""
 		━━━━━━━━━━━━━━━━━━━
 		🚀 **[Ranking-Batch-%d] 랭킹 배치 시작!**

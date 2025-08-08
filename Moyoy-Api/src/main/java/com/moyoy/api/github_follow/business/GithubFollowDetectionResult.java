@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.moyoy.domain.follow.implement.GithubFollowUser;
+import com.moyoy.domain.follow.GithubFollowUser;
 
 public record GithubFollowDetectionResult(
 

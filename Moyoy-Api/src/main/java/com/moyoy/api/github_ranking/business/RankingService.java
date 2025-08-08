@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.moyoy.domain.follow.implement.GithubFollowRelation;
-import com.moyoy.domain.follow.implement.GithubFollowRelationReader;
+import com.moyoy.domain.follow.GithubFollowRelation;
+import com.moyoy.domain.follow.GithubFollowRelationReader;
 import com.moyoy.domain.ranking.implement.Ranking;
 import com.moyoy.domain.ranking.implement.RankingReader;
 import com.moyoy.domain.ranking.implement.RankingSlice;

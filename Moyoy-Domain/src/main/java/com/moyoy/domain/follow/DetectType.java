@@ -1,4 +1,4 @@
-package com.moyoy.domain.follow.implement;
+package com.moyoy.domain.follow;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

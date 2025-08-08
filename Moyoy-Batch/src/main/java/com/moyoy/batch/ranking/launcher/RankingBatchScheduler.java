@@ -8,9 +8,9 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.moyoy.batch.common.Notifier.DiscordNotifier;
-import com.moyoy.batch.common.Notifier.NotificationRequest;
-import com.moyoy.batch.common.Notifier.NotificationType;
+import com.moyoy.batch.common.Notifier.RankingBatchNotifier;
+import com.moyoy.batch.common.Notifier.RankingBatchNotificationRequest;
+import com.moyoy.batch.common.Notifier.RankingBatchType;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistoryRepository;
 import com.moyoy.batch.ranking.job.RankingBatchJob;
@@ -25,7 +25,7 @@ public class RankingBatchScheduler {
 
 	private final RankingBatchJob rankingBatchJob;
 	private final RankingBatchHistoryRepository jobHistoryRepository;
-	private final DiscordNotifier discordNotifier;
+	private final RankingBatchNotifier rankingBatchNotifier;
 
 	@Scheduled(cron = "00 00 00 * * *")
 	public void dailyRankingBatch() {
@@ -36,10 +36,12 @@ public class RankingBatchScheduler {
 
 		log.info("{} 랭킹 배치 작업 시작!", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-		discordNotifier.sendNotification(NotificationRequest.of(NotificationType.RANKING_BATCH_START, rankingBatchHistory.getId()));
+		rankingBatchNotifier.sendNotification(
+			RankingBatchNotificationRequest.of(RankingBatchType.RANKING_BATCH_START, rankingBatchHistory.getId()));
 
 		rankingBatchJob.execute(rankingBatchHistory);
 
-		discordNotifier.sendNotification(NotificationRequest.of(NotificationType.RANKING_BATCH_END, rankingBatchHistory.getId()));
+		rankingBatchNotifier.sendNotification(
+			RankingBatchNotificationRequest.of(RankingBatchType.RANKING_BATCH_END, rankingBatchHistory.getId()));
 	}
 }

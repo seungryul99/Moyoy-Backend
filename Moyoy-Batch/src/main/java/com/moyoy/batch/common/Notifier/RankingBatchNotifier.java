@@ -4,34 +4,38 @@ import java.time.Duration;
 
 import org.springframework.stereotype.Component;
 
-import com.moyoy.batch.common.discord.data_access.DiscordRestClientImpl;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistoryRepository;
+import com.moyoy.infra.discord.dto.DiscordWebhookRequest;
+import com.moyoy.infra.discord.feign.DiscordWebhookClient;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class DiscordNotifier {
+public class RankingBatchNotifier {
 
-	private final DiscordRestClientImpl discordRestClientImpl;
+	private final DiscordWebhookClient discordWebhookClient;
 	private final RankingBatchHistoryRepository rankingBatchHistoryRepository;
 
-	public void sendNotification(NotificationRequest notificationRequest) {
+	public void sendNotification(RankingBatchNotificationRequest rankingBatchNotificationRequest) {
+
 		String message = formatMessage(
-			notificationRequest.type(),
-			notificationRequest.rankingBatchHistoryId());
-		discordRestClientImpl.sendAlarm(message);
+			rankingBatchNotificationRequest.type(),
+			rankingBatchNotificationRequest.batchId()
+		);
+
+		discordWebhookClient.send(DiscordWebhookRequest.of(message));
 	}
 
-	private String formatMessage(NotificationType notificationType, Long rankingBatchHistoryId) {
+	private String formatMessage(RankingBatchType notificationType, Long batchId) {
 
 		return switch (notificationType) {
 			case RANKING_BATCH_START ->
-				NotificationType.RANKING_BATCH_START.format(rankingBatchHistoryId);
+				RankingBatchType.RANKING_BATCH_START.format(batchId);
 
 			case RANKING_BATCH_END -> {
-				RankingBatchHistory rankingBatchHistory = rankingBatchHistoryRepository.findById(rankingBatchHistoryId).orElseThrow();
+				RankingBatchHistory rankingBatchHistory = rankingBatchHistoryRepository.findById(batchId).orElseThrow();
 
 				Duration duration = Duration.between(rankingBatchHistory.getStartedAt(), rankingBatchHistory.getFinishedAt());
 				long hours = duration.toHours();
@@ -45,8 +49,8 @@ public class DiscordNotifier {
 				int failCount = rankingBatchHistory.getFailCount();
 				double successRate = totalCount == 0 ? 0 : (double)successCount / totalCount * 100;
 
-				yield NotificationType.RANKING_BATCH_END.format(
-					rankingBatchHistoryId,
+				yield RankingBatchType.RANKING_BATCH_END.format(
+					batchId,
 					durationStr,
 					totalCount,
 					successCount,
