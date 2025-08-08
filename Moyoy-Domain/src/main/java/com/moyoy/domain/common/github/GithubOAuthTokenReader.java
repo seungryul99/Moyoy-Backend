@@ -5,7 +5,7 @@ import static com.moyoy.common.constant.MoyoConstants.*;
 
 import lombok.RequiredArgsConstructor;
 
-
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.stereotype.Component;
 
 /**

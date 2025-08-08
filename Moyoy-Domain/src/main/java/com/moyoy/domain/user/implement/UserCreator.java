@@ -2,6 +2,9 @@ package com.moyoy.domain.user.implement;
 
 import org.springframework.stereotype.Component;
 
+import com.moyoy.domain.common.github.GithubUserProfileDto;
+import com.moyoy.domain.ranking.data_access.RankingRepository;
+import com.moyoy.domain.ranking.implement.Ranking;
 import com.moyoy.domain.user.data_access.UserRepository;
 
 import lombok.RequiredArgsConstructor;

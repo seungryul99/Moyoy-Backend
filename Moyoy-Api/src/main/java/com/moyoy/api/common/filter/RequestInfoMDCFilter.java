@@ -22,7 +22,8 @@ public class RequestInfoMDCFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-		throws ServletException, IOException {
+		throws ServletException,
+			IOException {
 		try {
 			MDC.put(REQUEST_URI, request.getRequestURI());
 			MDC.put(HTTP_METHOD, request.getMethod());

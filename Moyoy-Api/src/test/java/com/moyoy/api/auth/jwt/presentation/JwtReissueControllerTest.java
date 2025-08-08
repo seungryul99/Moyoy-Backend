@@ -1,8 +1,8 @@
-package com.moyo.backend.security.jwt.presentation;
+package com.moyoy.api.auth.jwt.presentation;
 
 import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document;
 import static com.epages.restdocs.apispec.ResourceDocumentation.resource;
-import static com.moyo.backend.common.exception.auth.AuthErrorCode.*;
+import static com.moyoy.common.exception.auth.AuthErrorCode.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doThrow;
@@ -33,13 +33,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 
-import com.moyo.backend.common.exception.MoyoException;
-import com.moyo.backend.common.exception.auth.AuthErrorCode;
-import com.moyo.backend.common.exception.handler.GlobalExceptionHandler;
-import com.moyo.backend.common.util.CookieUtils;
-import com.moyo.backend.domain.auth.jwt.business.JwtReissueService;
-import com.moyo.backend.domain.auth.jwt.business.ReissuedTokens;
-import com.moyo.backend.domain.auth.jwt.presentation.JwtReissueController;
+import com.moyoy.api.auth.jwt.business.JwtReissueService;
+import com.moyoy.api.auth.jwt.business.ReissuedTokens;
+import com.moyoy.api.common.handler.GlobalExceptionHandler;
+import com.moyoy.api.common.util.CookieUtils;
+import com.moyoy.common.exception.MoyoException;
+import com.moyoy.common.exception.auth.AuthErrorCode;
 
 import jakarta.servlet.http.Cookie;
 

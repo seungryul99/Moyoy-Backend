@@ -2,14 +2,14 @@ package com.moyoy.api.github_follow.business;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
-import com.moyo.backend.domain.github_follow.implement.GithubFollowRelation;
-import com.moyo.backend.domain.github_follow.implement.GithubFollowRelationReader;
-import com.moyo.backend.domain.github_follow.implement.GithubFollowUpdater;
-import com.moyo.backend.domain.github_follow.implement.GithubFollowUser;
-
-import lombok.RequiredArgsConstructor;
+import com.moyoy.domain.follow.GithubFollowRelation;
+import com.moyoy.domain.follow.GithubFollowRelationReader;
+import com.moyoy.domain.follow.GithubFollowUpdater;
+import com.moyoy.domain.follow.GithubFollowUser;
 
 @Service
 @RequiredArgsConstructor

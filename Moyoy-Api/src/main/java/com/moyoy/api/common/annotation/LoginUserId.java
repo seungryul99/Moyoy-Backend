@@ -12,4 +12,4 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @AuthenticationPrincipal(expression = "#this == 'anonymousUser' ? null : getId()")
-public @interface LoginUserId {}
+public @interface LoginUserId{}

@@ -1,4 +1,4 @@
-package com.moyoy.api.auth.security.dto;
+package com.moyoy.domain.common.github;
 
 import static com.moyoy.common.constant.MoyoConstants.*;
 

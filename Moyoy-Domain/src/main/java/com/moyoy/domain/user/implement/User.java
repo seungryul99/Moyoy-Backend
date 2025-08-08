@@ -1,6 +1,7 @@
 package com.moyoy.domain.user.implement;
 
 import com.moyoy.domain.common.entity.BaseTimeEntity;
+import com.moyoy.domain.common.github.GithubUserProfileDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

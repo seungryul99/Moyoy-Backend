@@ -1,5 +1,7 @@
 package com.moyoy.domain.follow;
 
+import static com.moyoy.common.constant.MoyoConstants.*;
+
 import com.moyoy.infra.github.dto.GithubProfileResponse;
 
 public record GithubUserFollowStats(
@@ -16,8 +18,8 @@ public record GithubUserFollowStats(
 	 */
 	public static GithubUserFollowStats from(GithubProfileResponse githubProfileResponse) {
 
-		int maxFollowingPageSize = githubProfileResponse.following() / GITHUB_FOLLOW_QUERY_PAGING_SIZE + 1;
-		int maxFollowerPageSize = githubProfileResponse.followers() / GITHUB_FOLLOW_QUERY_PAGING_SIZE + 1;
+		int maxFollowingPageSize = githubProfileResponse.following() / GITHUB_QUERY_PAGING_SIZE + 1;
+		int maxFollowerPageSize = githubProfileResponse.followers() / GITHUB_QUERY_PAGING_SIZE + 1;
 
 		return new GithubUserFollowStats(maxFollowingPageSize, maxFollowerPageSize);
 	}

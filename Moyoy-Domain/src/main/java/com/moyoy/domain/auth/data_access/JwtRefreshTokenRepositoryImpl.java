@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtRefreshTokenRepositoryImpl implements JwtRefreshTokenRepository {
 
-	private final JwtRefreshTokenJpaRepositoryImpl jwtRefreshTokenJpaRepository;
+	private final JwtRefreshTokenJpaRepository jwtRefreshTokenJpaRepository;
 
 	@Override
 	public void save(JwtRefreshToken jwtRefreshToken) {

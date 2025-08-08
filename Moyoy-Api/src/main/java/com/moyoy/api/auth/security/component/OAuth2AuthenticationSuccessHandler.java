@@ -5,24 +5,26 @@ import static com.moyoy.common.constant.MoyoConstants.*;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.moyoy.api.common.util.CookieUtils;
-import com.moyoy.domain.auth.data_access.JwtRefreshTokenRepository;
-import com.moyoy.api.auth.jwt.implement.JwtProvider;
-import com.moyoy.domain.auth.implement.JwtRefreshToken;
-import com.moyoy.api.auth.jwt.implement.JwtUserInfo;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+
+import com.moyoy.api.auth.jwt.implement.JwtProvider;
+import com.moyoy.api.auth.jwt.implement.JwtUserInfo;
+import com.moyoy.api.common.util.CookieUtils;
+import com.moyoy.domain.auth.data_access.JwtRefreshTokenRepository;
+import com.moyoy.domain.auth.implement.JwtRefreshToken;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  *  사용자가 OAuth를 이용해 직접 인증 성공 후에 호출

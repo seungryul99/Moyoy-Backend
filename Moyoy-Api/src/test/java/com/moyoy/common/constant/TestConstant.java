@@ -1,4 +1,4 @@
-package com.moyo.common.constant;
+package com.moyoy.common.constant;
 
 public class TestConstant {
 

@@ -25,7 +25,8 @@ public class UserContextMDCFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain)
-		throws ServletException, IOException {
+		throws ServletException,
+			IOException {
 		try {
 			putMDCIfNotNull(MDC_KEY_IP, extractClientIp(request));
 			putMDCIfNotNull(MDC_KEY_USER_ID, extractUserIdFromSecurityContext());
@@ -48,6 +49,7 @@ public class UserContextMDCFilter extends OncePerRequestFilter {
 			.map(xff -> xff.split(",")[0].trim())
 			.orElse(request.getRemoteAddr());
 	}
+
 	private String extractUserIdFromSecurityContext() {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

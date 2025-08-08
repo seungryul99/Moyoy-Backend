@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public record GithubProfileResponse(
 
 	String login,
-	long id,
+	int id,
 
 	@JsonProperty("node_id")
 	String nodeId,

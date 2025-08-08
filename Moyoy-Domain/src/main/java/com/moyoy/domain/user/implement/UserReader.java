@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.moyoy.domain.ranking.data_access.UserCountAndLastId;
 import com.moyoy.domain.user.data_access.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -31,16 +32,10 @@ public class UserReader {
 		return userRepository.findAll(lastUserId, size);
 	}
 
-	public UserRankingBatchSnapshot getUserBatchSnapshot() {
-		UserStats userStats = userRepository.fetchUserCountAndLastId();
-		return UserRankingBatchSnapshot.from(userStats);
-	}
-
 	public UserStats getUserStats() {
 
-
-		userRepository.fetchUserCountAndLastId();
-		return new UserStats(count, lastId);
+		UserCountAndLastId userCountAndLastId = userRepository.fetchUserCountAndLastId();
+		return new UserStats(userCountAndLastId.userCount(), userCountAndLastId.lastUserId());
 	}
 
 }

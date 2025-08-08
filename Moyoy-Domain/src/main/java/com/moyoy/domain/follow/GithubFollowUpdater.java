@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.moyoy.common.exception.user.UserNotFoundException;
 import com.moyoy.domain.common.github.GithubOAuthTokenReader;
+import com.moyoy.domain.common.github.GithubUserProfileDto;
 import com.moyoy.infra.github.feign.GithubFollowClient;
 import com.moyoy.domain.user.implement.User;
 import com.moyoy.domain.user.implement.UserReader;
@@ -28,8 +29,8 @@ public class GithubFollowUpdater {
 		Integer githubUserId = userReader.findById(currentUserId).orElseThrow(UserNotFoundException::new).getGithubUserId();
 		String accessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
 
-		GithubFollowUser currentUser = githubUserReader.findGithubUser(githubUserId, accessToken);
-		GithubFollowUser targetUser = githubUserReader.findGithubUser(targetGithubUserId, accessToken);
+		GithubFollowUser currentUser = githubUserReader.fetchGithubUser(githubUserId, accessToken);
+		GithubFollowUser targetUser = githubUserReader.fetchGithubUser(targetGithubUserId, accessToken);
 
 		ResponseEntity<Void> followResult = githubFollowClient.follow(targetUser.username(), accessToken);
 
@@ -54,8 +55,8 @@ public class GithubFollowUpdater {
 		Integer githubUserId = userReader.findById(currentUserId).orElseThrow(UserNotFoundException::new).getGithubUserId();
 		String accessToken = githubOAuthTokenReader.getGithubAccessToken(currentUserId);
 
-		GithubFollowUser currentUser = githubUserReader.findGithubUser(githubUserId, accessToken);
-		GithubFollowUser targetUser = githubUserReader.findGithubUser(targetGithubUserId, accessToken);
+		GithubFollowUser currentUser = githubUserReader.fetchGithubUser(githubUserId, accessToken);
+		GithubFollowUser targetUser = githubUserReader.fetchGithubUser(targetGithubUserId, accessToken);
 
 		ResponseEntity<Void> unfollowResult = githubFollowClient.unfollow(targetUser.username(), accessToken);
 

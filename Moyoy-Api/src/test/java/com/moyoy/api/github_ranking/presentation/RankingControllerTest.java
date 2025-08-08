@@ -1,9 +1,9 @@
-package com.moyo.backend.domain.github_ranking.presentation;
+package com.moyoy.api.github_ranking.presentation;
 
 import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.*;
 import static com.epages.restdocs.apispec.ResourceDocumentation.*;
 import static com.epages.restdocs.apispec.ResourceDocumentation.parameterWithName;
-import static com.moyo.common.constant.TestConstant.*;
+import static com.moyoy.common.constant.TestConstant.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -31,14 +31,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.SimpleType;
 
-import com.moyo.backend.common.exception.handler.GlobalExceptionHandler;
-import com.moyo.backend.domain.github_ranking.business.RankingSearchResult;
-import com.moyo.backend.domain.github_ranking.business.RankingService;
-import com.moyo.backend.domain.github_ranking.implement.Ranking;
-import com.moyo.backend.domain.github_ranking.implement.RankingWithUser;
-import com.moyo.backend.domain.user.implement.Role;
-import com.moyo.backend.domain.user.implement.User;
-import com.moyo.common.annotation.WithMockMoyoyUser;
+import com.moyoy.api.common.handler.GlobalExceptionHandler;
+import com.moyoy.api.github_ranking.business.RankingSearchResult;
+import com.moyoy.api.github_ranking.business.RankingService;
+import com.moyoy.common.annotation.WithMockMoyoyUser;
+import com.moyoy.domain.ranking.implement.Ranking;
+import com.moyoy.domain.ranking.implement.RankingWithUser;
+import com.moyoy.domain.user.implement.Role;
+import com.moyoy.domain.user.implement.User;
 
 @WebMvcTest(value = RankingController.class, excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {OncePerRequestFilter.class})})
 @AutoConfigureRestDocs

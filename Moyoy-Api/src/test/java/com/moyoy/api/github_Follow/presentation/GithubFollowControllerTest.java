@@ -1,10 +1,10 @@
-package com.moyo.backend.domain.github_Follow.presentation;
+package com.moyoy.api.github_Follow.presentation;
 
 import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document;
 import static com.epages.restdocs.apispec.ResourceDocumentation.parameterWithName;
 import static com.epages.restdocs.apispec.ResourceDocumentation.resource;
-import static com.moyo.backend.common.exception.github_follow.FollowErrorCode.LIMIT_EXCEED;
-import static com.moyo.common.constant.TestConstant.MOCK_JWT_ACCESS_TOKEN;
+import static com.moyoy.common.constant.TestConstant.MOCK_JWT_ACCESS_TOKEN;
+import static com.moyoy.common.exception.github_follow.FollowErrorCode.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.willDoNothing;
@@ -43,14 +43,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.SimpleType;
 
-import com.moyo.backend.common.exception.MoyoException;
-import com.moyo.backend.common.exception.github_follow.FollowErrorCode;
-import com.moyo.backend.common.exception.handler.GlobalExceptionHandler;
-import com.moyo.backend.domain.github_follow.business.GithubFollowDetectionResult;
-import com.moyo.backend.domain.github_follow.business.GithubFollowService;
-import com.moyo.backend.domain.github_follow.implement.GithubFollowUser;
-import com.moyo.backend.domain.github_follow.presentation.GithubFollowController;
-import com.moyo.common.annotation.WithMockMoyoyUser;
+import com.moyoy.api.common.handler.GlobalExceptionHandler;
+import com.moyoy.api.github_follow.business.GithubFollowDetectionResult;
+import com.moyoy.api.github_follow.business.GithubFollowService;
+import com.moyoy.api.github_follow.presentation.GithubFollowController;
+import com.moyoy.common.annotation.WithMockMoyoyUser;
+import com.moyoy.common.exception.MoyoException;
+import com.moyoy.common.exception.github_follow.FollowErrorCode;
+import com.moyoy.domain.follow.GithubFollowUser;
 
 @WebMvcTest(value = GithubFollowController.class, excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {OncePerRequestFilter.class})})
 @AutoConfigureRestDocs

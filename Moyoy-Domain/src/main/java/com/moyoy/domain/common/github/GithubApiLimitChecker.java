@@ -1,5 +1,6 @@
 package com.moyoy.domain.common.github;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import com.moyoy.common.exception.github_follow.GithubRateLimitExceedException;
 import com.moyoy.infra.github.feign.GithubProfileClient;

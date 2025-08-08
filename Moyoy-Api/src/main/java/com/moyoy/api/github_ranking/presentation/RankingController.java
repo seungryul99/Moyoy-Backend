@@ -1,5 +1,7 @@
 package com.moyoy.api.github_ranking.presentation;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +13,6 @@ import com.moyoy.api.common.response.ApiResponse;
 import com.moyoy.api.github_ranking.business.RankingSearch;
 import com.moyoy.api.github_ranking.business.RankingSearchResult;
 import com.moyoy.api.github_ranking.business.RankingService;
-
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor

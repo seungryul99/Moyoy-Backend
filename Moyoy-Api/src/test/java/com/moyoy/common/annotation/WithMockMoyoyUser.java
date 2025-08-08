@@ -1,4 +1,4 @@
-package com.moyo.common.annotation;
+package com.moyoy.common.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

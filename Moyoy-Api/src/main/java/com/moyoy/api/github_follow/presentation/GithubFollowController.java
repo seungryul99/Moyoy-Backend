@@ -1,5 +1,7 @@
 package com.moyoy.api.github_follow.presentation;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,6 @@ import com.moyoy.api.common.response.ApiResponse;
 import com.moyoy.api.github_follow.business.GithubFollowDetection;
 import com.moyoy.api.github_follow.business.GithubFollowDetectionResult;
 import com.moyoy.api.github_follow.business.GithubFollowService;
-
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor

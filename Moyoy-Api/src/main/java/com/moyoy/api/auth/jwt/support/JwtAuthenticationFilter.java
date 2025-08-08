@@ -10,6 +10,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,21 +21,20 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.moyoy.api.auth.security.dto.GithubOAuth2User;
-import com.moyoy.common.exception.auth.JwtTokenExpiredException;
-import com.moyoy.common.exception.auth.JwtTokenInvalidException;
-import com.moyoy.common.exception.auth.JwtTokenTypeMismatchException;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 
+import com.moyoy.api.auth.security.dto.GithubOAuth2User;
+import com.moyoy.common.exception.auth.JwtTokenExpiredException;
+import com.moyoy.common.exception.auth.JwtTokenInvalidException;
+import com.moyoy.common.exception.auth.JwtTokenTypeMismatchException;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 ///  TODO : 리팩토링 필요
 

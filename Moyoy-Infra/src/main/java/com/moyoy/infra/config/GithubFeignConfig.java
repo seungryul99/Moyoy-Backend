@@ -11,7 +11,7 @@ import feign.RequestInterceptor;
 public class GithubFeignConfig {
 
 	@Bean
-	public RequestInterceptor requestInterceptor() {
+	public RequestInterceptor githubRequestInterceptor() {
 
 		return requestTemplate -> {
 

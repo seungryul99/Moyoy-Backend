@@ -35,7 +35,7 @@ public class RankingBatchReader {
 
 	public UserRankingProfile fetchUserRankingProfile(String accessToken, Integer githubUserId) {
 
-		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfileEntity(accessToken, githubUserId);
+		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfile(accessToken, githubUserId);
 
 		return UserRankingProfile.from(githubProfileResponse);
 	}

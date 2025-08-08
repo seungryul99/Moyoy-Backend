@@ -3,6 +3,8 @@ package com.moyoy.api.auth.security.support;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl.*;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
@@ -18,17 +20,15 @@ import org.springframework.security.web.session.DisableEncodeUrlFilter;
 
 import com.moyoy.api.auth.jwt.support.JwtAuthenticationFilter;
 import com.moyoy.api.auth.jwt.support.JwtExceptionHandleFilter;
-import com.moyoy.api.auth.security.component.CustomOAuth2UserService;
-import com.moyoy.api.auth.security.component.HttpCookieOAuth2AuthorizationRequestRepository;
-import com.moyoy.api.auth.security.component.OAuth2AuthenticationSuccessHandler;
-import com.moyoy.api.auth.security.component.RdbOAuth2AuthorizedClientService;
 import com.moyoy.api.auth.security.component.CustomAccessDeniedHandler;
 import com.moyoy.api.auth.security.component.CustomAuthenticationEntryPoint;
+import com.moyoy.api.auth.security.component.CustomOAuth2UserService;
+import com.moyoy.api.auth.security.component.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.moyoy.api.auth.security.component.OAuth2AuthenticationFailureHandler;
+import com.moyoy.api.auth.security.component.OAuth2AuthenticationSuccessHandler;
+import com.moyoy.api.auth.security.component.RdbOAuth2AuthorizedClientService;
 import com.moyoy.api.common.filter.RequestInfoMDCFilter;
 import com.moyoy.api.common.filter.UserContextMDCFilter;
-
-import lombok.RequiredArgsConstructor;
 
 @EnableWebSecurity
 @Configuration

@@ -2,6 +2,8 @@ package com.moyoy.domain.user.data_access;
 
 
 
+import static com.moyoy.domain.user.implement.QUser.*;
+
 import java.util.List;
 
 import org.springframework.stereotype.Repository;

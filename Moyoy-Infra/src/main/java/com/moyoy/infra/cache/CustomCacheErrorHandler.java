@@ -1,4 +1,4 @@
-package com.moyoy.api.common.handler;
+package com.moyoy.infra.cache;
 
 import lombok.extern.slf4j.Slf4j;
 

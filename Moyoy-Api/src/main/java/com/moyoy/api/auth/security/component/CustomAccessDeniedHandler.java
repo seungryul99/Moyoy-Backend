@@ -1,10 +1,11 @@
 package com.moyoy.api.auth.security.component;
 
-
-
 import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -16,8 +17,6 @@ import com.moyoy.common.exception.auth.AuthErrorCode;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  *  JWT ACCESS TOKEN 기반 인가 에러 처리

@@ -4,14 +4,16 @@ import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.moyoy.api.common.response.ApiResponse;
 import com.moyoy.common.exception.BaseErrorCode;
 
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 
 /**
  *  ControllerAdvice가 아닌 곳에서 에러를 직접 처리할 때 사용

@@ -2,6 +2,8 @@ package com.moyoy.api.github_ranking.business;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import com.moyoy.domain.follow.GithubFollowRelation;
@@ -13,8 +15,6 @@ import com.moyoy.domain.ranking.implement.RankingUserCombiner;
 import com.moyoy.domain.ranking.implement.RankingWithUser;
 import com.moyoy.domain.user.implement.User;
 import com.moyoy.domain.user.implement.UserReader;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor

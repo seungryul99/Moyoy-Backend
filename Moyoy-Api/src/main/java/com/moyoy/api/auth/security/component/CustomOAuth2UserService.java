@@ -1,5 +1,8 @@
 package com.moyoy.api.auth.security.component;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -7,11 +10,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 import com.moyoy.api.auth.security.dto.GithubOAuth2User;
-import com.moyoy.api.auth.security.dto.GithubUserProfileDto;
+import com.moyoy.domain.common.github.GithubUserProfileDto;
+import com.moyoy.domain.common.github.GithubUserSynchronizer;
 import com.moyoy.domain.user.implement.User;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  *  우리 서비스의 성격이 깃허브와 깃허브 사용자 간의 미들웨어 느낌의 서비스인 점,

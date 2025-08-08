@@ -16,7 +16,6 @@ import com.moyoy.domain.common.github.GithubOAuthTokenReader;
 import com.moyoy.domain.user.implement.UserReader;
 import com.moyoy.infra.github.feign.GithubFollowClient;
 import com.moyoy.infra.github.feign.GithubProfileClient;
-import com.moyoy.infra.github.follow.GithubFollowHttpClient;
 import com.moyoy.infra.github.dto.GithubFollowUserResponse;
 import com.moyoy.infra.github.dto.GithubProfileResponse;
 
@@ -34,8 +33,6 @@ public class GithubFollowRelationReader {
 	private final GithubOAuthTokenReader githubOAuthTokenReader;
 	private final UserReader userReader;
 
-	private final GithubFollowHttpClient githubFollowHttpClient;
-
 	///  여러 외부 API 호출후 가공해서 만들어진 응답을 캐싱
 	@Caching(
 		cacheable = @Cacheable(value = "followRelation", key = "#userId", condition = "!#forceSync"),
@@ -48,7 +45,7 @@ public class GithubFollowRelationReader {
 
 		githubApiLimitChecker.assertCanGithubRequest(githubAccessToken, githubUserId);
 
-		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfileEntity(githubAccessToken, githubUserId);
+		GithubProfileResponse githubProfileResponse = githubProfileClient.fetchUserProfile(githubAccessToken, githubUserId);
 		GithubUserFollowStats followStats = GithubUserFollowStats.from(githubProfileResponse);
 		log.info("{}의 팔로워, 팔로잉 페이지 정보 로그 (page size = {}) | followerMaxPage : {} , followingMaxPage : {},", userId, GITHUB_QUERY_PAGING_SIZE, followStats.maxFollowerPageSize(), followStats.maxFollowingPageSize());
 

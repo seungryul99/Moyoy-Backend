@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.moyoy.domain.auth.implement.JwtRefreshToken;
 
-public interface JwtRefreshTokenJpaRepositoryImpl extends JpaRepository<JwtRefreshToken, Long> {
+public interface JwtRefreshTokenJpaRepository extends JpaRepository<JwtRefreshToken, Long> {
 
 	boolean existsByValue(String tokenValue);
 

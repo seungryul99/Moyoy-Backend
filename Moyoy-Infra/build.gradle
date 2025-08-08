@@ -1,6 +1,10 @@
 dependencies {
     implementation project(':Moyoy-Common')
     implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+
+
+    // Spring Web (ResponseEntity 등) , 임시로 넣고 추후 제거
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 jar.enabled = true

@@ -1,6 +1,7 @@
 package com.moyoy.domain.ranking.data_access;
 
-
+import static com.moyoy.domain.ranking.implement.QRanking.*;
+import static com.moyoy.domain.user.implement.QUser.*;
 
 import java.util.List;
 

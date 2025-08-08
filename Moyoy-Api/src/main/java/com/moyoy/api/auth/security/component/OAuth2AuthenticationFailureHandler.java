@@ -1,10 +1,11 @@
 package com.moyoy.api.auth.security.component;
 
-
-
 import static com.moyoy.common.constant.MoyoConstants.*;
 
 import java.io.IOException;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -15,8 +16,6 @@ import com.moyoy.common.exception.auth.AuthErrorCode;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  *  OAuth를 이용한 사용자의 직접적인 인증 과정에서 발생한 에러 처리, AuthenticationEntryPoint와 다름
