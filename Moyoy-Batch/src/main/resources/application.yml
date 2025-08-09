@@ -46,3 +46,12 @@ spring:
 # LogBack
 logging:
   config: classpath:logging/logback-${spring.profiles.active:local}.xml
+
+
+discord:
+  webhook-uri:
+    id: ${RANKING_DISCORD_WEBHOOK_ID}
+    token: ${RANKING_DISCORD_WEBHOOK_TOKEN}
+
+server:
+  port: 8082

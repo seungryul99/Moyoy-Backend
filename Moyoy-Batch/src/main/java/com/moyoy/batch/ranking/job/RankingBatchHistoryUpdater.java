@@ -2,13 +2,13 @@ package com.moyoy.batch.ranking.job;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistoryRepository;
 import com.moyoy.batch.ranking.component.dto.RankingBatchStats;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

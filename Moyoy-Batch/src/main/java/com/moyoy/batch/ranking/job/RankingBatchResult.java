@@ -1,9 +1,9 @@
 package com.moyoy.batch.ranking.job;
 
-import com.moyoy.domain.ranking.implement.Ranking;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import com.moyoy.domain.ranking.implement.Ranking;
 
 @Getter
 @AllArgsConstructor

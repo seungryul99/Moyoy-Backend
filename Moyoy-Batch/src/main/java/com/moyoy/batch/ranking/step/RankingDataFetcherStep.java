@@ -3,20 +3,20 @@ package com.moyoy.batch.ranking.step;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
+import com.moyoy.batch.ranking.component.dto.GithubCommitStats;
+import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
+import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
+import com.moyoy.batch.ranking.component.dto.UserRankingProfile;
+import com.moyoy.batch.ranking.component.processor.CommitStatCalculator;
+import com.moyoy.batch.ranking.component.processor.GithubRepoClassifier;
+import com.moyoy.batch.ranking.component.reader.RankingBatchReader;
 import com.moyoy.domain.common.github.GithubApiLimitChecker;
 import com.moyoy.domain.common.github.GithubOAuthTokenReader;
-import com.moyoy.batch.ranking.component.processor.CommitStatCalculator;
-import com.moyoy.batch.ranking.component.dto.GithubCommitStats;
-import com.moyoy.batch.ranking.component.processor.GithubRepoClassifier;
-import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
-import com.moyoy.batch.ranking.component.reader.RankingBatchReader;
-import com.moyoy.batch.ranking.component.dto.UserRankingProfile;
 import com.moyoy.domain.user.implement.User;
-import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public class RankingDataFetcherStep {
 	private final GithubApiLimitChecker githubApiLimitChecker;
 	private final CommitStatCalculator commitStatCalculator;
 
-	public RankingDataResult execute(User user){
+	public RankingDataResult execute(User user) {
 
 		Long currentUserId = user.getId();
 		Integer currentGithubUserId = user.getGithubUserId();
@@ -60,6 +60,6 @@ public class RankingDataFetcherStep {
 
 		GithubCommitStats commitStats = commitStatCalculator.calculateCommitStats(userRepoContributorStatsList);
 
-		return RankingDataResult.of(rankingCandidateRepos,userRankingProfile ,commitStats);
+		return RankingDataResult.of(rankingCandidateRepos, userRankingProfile, commitStats);
 	}
 }

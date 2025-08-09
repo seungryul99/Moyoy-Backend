@@ -13,6 +13,9 @@ public class DiscordFeignConfig {
 	@Bean
 	public RequestInterceptor discordRequestInterceptor() {
 
-		return requestTemplate -> requestTemplate.header(CONTENT_TYPE, JSON);
+		return requestTemplate -> {
+
+			requestTemplate.header(CONTENT_TYPE, JSON);
+		};
 	}
 }

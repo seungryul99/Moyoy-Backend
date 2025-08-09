@@ -2,6 +2,7 @@ package com.moyoy.batch.common.Notifier;
 
 import java.time.Duration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
@@ -9,23 +10,33 @@ import com.moyoy.batch.jobRepository.ranking.RankingBatchHistoryRepository;
 import com.moyoy.infra.discord.dto.DiscordWebhookRequest;
 import com.moyoy.infra.discord.feign.DiscordWebhookClient;
 
-import lombok.RequiredArgsConstructor;
-
 @Component
-@RequiredArgsConstructor
 public class RankingBatchNotifier {
 
+	private final String discordWebHookId;
+	private final String discordWebHookToken;
 	private final DiscordWebhookClient discordWebhookClient;
 	private final RankingBatchHistoryRepository rankingBatchHistoryRepository;
+
+	public RankingBatchNotifier(
+		@Value("${discord.webhook-uri.id}") String discordWebHookId,
+		@Value("${discord.webhook-uri.token}") String discordWebHookToken,
+		DiscordWebhookClient discordWebhookClient,
+		RankingBatchHistoryRepository rankingBatchHistoryRepository
+	) {
+		this.discordWebHookId = discordWebHookId;
+		this.discordWebHookToken = discordWebHookToken;
+		this.discordWebhookClient = discordWebhookClient;
+		this.rankingBatchHistoryRepository = rankingBatchHistoryRepository;
+	}
 
 	public void sendNotification(RankingBatchNotificationRequest rankingBatchNotificationRequest) {
 
 		String message = formatMessage(
 			rankingBatchNotificationRequest.type(),
-			rankingBatchNotificationRequest.batchId()
-		);
+			rankingBatchNotificationRequest.batchId());
 
-		discordWebhookClient.send(DiscordWebhookRequest.of(message));
+		discordWebhookClient.send(discordWebHookId, discordWebHookToken, DiscordWebhookRequest.of(message));
 	}
 
 	private String formatMessage(RankingBatchType notificationType, Long batchId) {

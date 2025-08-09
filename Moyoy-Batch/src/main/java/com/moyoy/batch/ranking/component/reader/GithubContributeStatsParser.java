@@ -2,15 +2,16 @@ package com.moyoy.batch.ranking.component.reader;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 
-import lombok.RequiredArgsConstructor;
+import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 
 @Component
 @RequiredArgsConstructor

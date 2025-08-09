@@ -1,5 +1,7 @@
 package com.moyoy.batch.ranking.step;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.job.RankingBatchResult;
@@ -7,13 +9,11 @@ import com.moyoy.domain.ranking.implement.Ranking;
 import com.moyoy.domain.ranking.implement.RankingReader;
 import com.moyoy.domain.ranking.implement.RankingUpdate;
 
-import lombok.RequiredArgsConstructor;
-
 @Component
 @RequiredArgsConstructor
 public class RankingUpdatePreparationStep {
 
-	private final RankingReader	rankingReader;
+	private final RankingReader rankingReader;
 
 	public void execute(RankingUpdateParameters rankingUpdateParameters, RankingBatchResult rankingBatchResult) {
 

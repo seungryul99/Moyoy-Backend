@@ -1,5 +1,10 @@
 package com.moyoy.batch.jobRepository.ranking;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,10 +13,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+/**
+ *   추후 Spring Batch로 넘어갈 예정이라 임시로 DB Access에 JPA를 사용중임.
+ *
+ *   JPA 연관관계 매핑은 사용 X
+ */
 
 @Table(name = "ranking_batch_detail")
 @Entity

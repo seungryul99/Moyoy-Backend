@@ -2,12 +2,12 @@ package com.moyoy.batch.ranking.component.processor;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.component.dto.GithubContributorDetails;
 import com.moyoy.batch.ranking.component.reader.RankingBatchReader;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

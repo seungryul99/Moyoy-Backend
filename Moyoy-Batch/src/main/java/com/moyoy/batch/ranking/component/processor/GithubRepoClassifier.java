@@ -3,11 +3,11 @@ package com.moyoy.batch.ranking.component.processor;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

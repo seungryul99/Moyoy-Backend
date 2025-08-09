@@ -5,18 +5,18 @@ import static java.lang.Thread.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.moyoy.batch.common.Notifier.RankingBatchNotifier;
 import com.moyoy.batch.common.Notifier.RankingBatchNotificationRequest;
+import com.moyoy.batch.common.Notifier.RankingBatchNotifier;
 import com.moyoy.batch.common.Notifier.RankingBatchType;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistoryRepository;
 import com.moyoy.batch.ranking.job.RankingBatchJob;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component

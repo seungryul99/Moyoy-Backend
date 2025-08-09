@@ -1,5 +1,0 @@
-# Discord
-
-discord:
-  webhook-uri:
-    ranking : ${RANKING_DISCORD_URL}

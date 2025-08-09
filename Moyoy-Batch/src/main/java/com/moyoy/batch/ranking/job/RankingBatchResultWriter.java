@@ -3,16 +3,16 @@ package com.moyoy.batch.ranking.job;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
-import com.moyoy.domain.ranking.implement.Ranking;
-import com.moyoy.batch.jobRepository.ranking.RankingBatchDetail;
-import com.moyoy.batch.ranking.component.writer.RankingBatchDetailUpdater;
-import com.moyoy.batch.ranking.component.dto.RankingBatchStats;
-import com.moyoy.domain.ranking.implement.RankingUpdater;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.stereotype.Component;
+
+import com.moyoy.batch.jobRepository.ranking.RankingBatchDetail;
+import com.moyoy.batch.ranking.component.dto.RankingBatchStats;
+import com.moyoy.batch.ranking.component.writer.RankingBatchDetailUpdater;
+import com.moyoy.domain.ranking.implement.Ranking;
+import com.moyoy.domain.ranking.implement.RankingUpdater;
 
 @Slf4j
 @Component
@@ -35,8 +35,7 @@ public class RankingBatchResultWriter {
 				rankings.add(rankingBatchResult.getRanking());
 				rankingBatchDetails.add(RankingBatchDetail.success(batchId, rankingBatchResult.getRanking().getId()));
 				successCount++;
-			}
-			else {
+			} else {
 
 				rankingBatchDetails.add(RankingBatchDetail.fail(batchId, rankingBatchResult.getUserId(), rankingBatchResult.getErrorMessage()));
 				failCount++;

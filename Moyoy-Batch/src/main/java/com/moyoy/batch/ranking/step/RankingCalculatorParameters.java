@@ -15,7 +15,6 @@ public record RankingCalculatorParameters(
 		int commitLines) {
 	}
 
-
 	public static RankingCalculatorParameters from(RankingDataResult rankingDataResult) {
 
 		int stars = rankingDataResult.rankingCandidateRepos().stream()

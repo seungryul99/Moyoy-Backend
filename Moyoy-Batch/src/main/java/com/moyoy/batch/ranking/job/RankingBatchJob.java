@@ -3,9 +3,13 @@ package com.moyoy.batch.ranking.job;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.jobRepository.ranking.RankingBatchHistory;
+import com.moyoy.batch.ranking.component.dto.RankingBatchStats;
 import com.moyoy.batch.ranking.step.RankingCalculatorParameters;
 import com.moyoy.batch.ranking.step.RankingCalculatorResult;
 import com.moyoy.batch.ranking.step.RankingCalculatorStep;
@@ -13,13 +17,9 @@ import com.moyoy.batch.ranking.step.RankingDataFetcherStep;
 import com.moyoy.batch.ranking.step.RankingDataResult;
 import com.moyoy.batch.ranking.step.RankingUpdateParameters;
 import com.moyoy.batch.ranking.step.RankingUpdatePreparationStep;
-import com.moyoy.batch.ranking.component.dto.RankingBatchStats;
 import com.moyoy.domain.user.implement.User;
 import com.moyoy.domain.user.implement.UserReader;
 import com.moyoy.domain.user.implement.UserStats;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component

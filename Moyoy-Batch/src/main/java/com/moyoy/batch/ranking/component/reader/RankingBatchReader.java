@@ -8,6 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +18,11 @@ import com.moyoy.batch.ranking.component.dto.GithubContributorDetails;
 import com.moyoy.batch.ranking.component.dto.GithubRepoDetails;
 import com.moyoy.batch.ranking.component.dto.RepoContributorStats;
 import com.moyoy.batch.ranking.component.dto.UserRankingProfile;
-import com.moyoy.infra.github.feign.GithubProfileClient;
-import com.moyoy.infra.github.feign.GithubRepoClient;
 import com.moyoy.infra.github.dto.GithubProfileResponse;
 import com.moyoy.infra.github.dto.GithubRepoContributorsResponse;
 import com.moyoy.infra.github.dto.GithubRepoResponse;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.moyoy.infra.github.feign.GithubProfileClient;
+import com.moyoy.infra.github.feign.GithubRepoClient;
 
 @Slf4j
 @Component
@@ -89,7 +89,8 @@ public class RankingBatchReader {
 				break;
 			} else if (response.getStatusCode().value() == 202) {
 				sleep(10000);
-			} else throw new RuntimeException("repo 통계 데이터 수집중 에러 발생");
+			} else
+				throw new RuntimeException("repo 통계 데이터 수집중 에러 발생");
 		}
 
 		return githubContributeStatsParser.parseGithubContributeStats(response);

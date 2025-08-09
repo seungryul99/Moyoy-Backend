@@ -1,10 +1,10 @@
 package com.moyoy.batch.ranking.step;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.moyoy.batch.ranking.component.processor.RankingCalculator;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

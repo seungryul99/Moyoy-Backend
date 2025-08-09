@@ -1,26 +1,33 @@
 package com.moyoy.domain.common.github;
 
-
 import static com.moyoy.common.constant.MoyoConstants.*;
+
+import org.springframework.stereotype.Component;
+
+import com.moyoy.infra.database.jdbc.OAuthTokenJDBCRepository;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
-import org.springframework.stereotype.Component;
-
 /**
- *  서버측 Storage에 저장된 사용자의 Github OAuth Token이 필요할 때 사용
+ *  API, Batch 등의 서비스에서 같이 써야 하는데
+ *  Batch 모듈은 Spring Security를 사용하지 않고
+ *  org.springframework.boot:spring-boot-starter-oauth2-client 를 사용할 수 없음.
  *
- *  OAuth2 Client에서 제공하는 OAuth2AuthorizedClientService는 비즈니스 레이어가 아님. 구현 레이어로 취급 했음.
+ *  따라서 API 측에서 사용자와 상호작용하면서 OAuth2AuthorizedClientService 를 사용해 DB에
+ *  유저 OAuth 토큰 관련 정보들을 관리하고
+ *
+ *  이를 읽어가는 GithubOAuthTokenReader는 OAuth2AuthorizedClientService 없이
+ *  JDBC로 구현한 Repository를 사용함.
  */
 
 @Component
 @RequiredArgsConstructor
 public class GithubOAuthTokenReader {
 
-	private final OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
+	private final OAuthTokenJDBCRepository oAuthTokenJDBCRepository;
 
 	public String getGithubAccessToken(Long userId) {
-		return oAuth2AuthorizedClientService.loadAuthorizedClient(GITHUB_REGISTRATION_ID, userId.toString()).getAccessToken().getTokenValue();
+
+		return oAuthTokenJDBCRepository.findAccessTokenValue(GITHUB_REGISTRATION_ID, userId.toString()).orElseThrow();
 	}
 }
